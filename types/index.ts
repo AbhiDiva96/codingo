@@ -17,5 +17,16 @@ export interface ScrapedData {
 
 export interface ScrapedLeetCodeData{
   username: string;
-  badges?: number;
+  name : string;
+  totalMedal?: number;
+  rank?: number;
+  solved?:number;
+  activeYears?: [];
+  streak?: number;
+  totalActiveDays?:number;
+  dailyChallengeMedal?:number;
+  competitionMedal?: number;
+  GlobalRanking?: number;
+  Rating?: number;
+  level?: string | null ;
 }
