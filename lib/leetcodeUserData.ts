@@ -2,7 +2,8 @@ import axios from 'axios';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 import { ScrapedLeetCodeData } from '@/types';
-import { GET_USER_CONTEST, GET_USER_DATA } from './graphql/leetcodegraphQl';
+import { GET_USER_CONTEST, GET_USER_DATA, GET_USER_SOLVED } from './graphql/leetcodegraphQl';
+import { Badge } from 'lucide-react';
 
 const client = new ApolloClient({
     uri: 'https://leetcode.com/graphql',
@@ -10,7 +11,6 @@ const client = new ApolloClient({
    })
 
    type BadgeName = "Annual Badge" | "Guardian" | "Knight"; 
-   type Levels = "Guardian" | "Knight";
  
 
 export async function scrapeLeetCode(username: string ) {
@@ -29,8 +29,9 @@ export async function scrapeLeetCode(username: string ) {
          competitionMedal:0,
         GlobalRanking: 0,
         Rating: 0,
-        level:''
-
+        level:'',
+        iconGif:'',
+        iconGifBackground: '',
    }
 
     try {
@@ -45,6 +46,27 @@ export async function scrapeLeetCode(username: string ) {
         variables: { username },
       });
 
+      const {data : solvedData} = await client.query({
+        query: GET_USER_SOLVED,
+        variables: {username},
+      })
+
+  
+if (solvedData && solvedData.matchedUser) {
+  const totalSolved = solvedData.matchedUser.submitStatsGlobal;
+  const submissionStats = totalSolved.acSubmissionNum || [];
+
+  const difficultyCounts = submissionStats.reduce((acc:any, item : any) => {
+    acc[item.difficulty] = item.count;
+    return acc;
+  }, {});
+
+  scrapeLeetcodeData.solved = difficultyCounts.All;
+
+}
+
+
+   
 
     // Extract data from the response
     if (userData && userData.matchedUser) {
@@ -63,7 +85,17 @@ export async function scrapeLeetCode(username: string ) {
             dailyChallengeMedals++;
          }
          });
-      
+
+    const getFirstElement = medals[0];
+    const getFirstIconGif = getFirstElement.medal.config.iconGif;
+    const getFirstGifbackground = getFirstElement.medal.config.iconGif;
+    scrapeLeetcodeData.iconGif = getFirstIconGif;
+    scrapeLeetcodeData.iconGifBackground = getFirstGifbackground;
+  
+          
+    
+    
+                          
        scrapeLeetcodeData.competitionMedal = competitionMedals;
        scrapeLeetcodeData.dailyChallengeMedal = dailyChallengeMedals;
       scrapeLeetcodeData.totalMedal = medals.length;

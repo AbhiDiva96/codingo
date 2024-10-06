@@ -29,4 +29,6 @@ export interface ScrapedLeetCodeData{
   GlobalRanking?: number;
   Rating?: number;
   level?: string | null ;
+   iconGif?: string;
+  iconGifBackground: string;
 }
