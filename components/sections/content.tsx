@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import React, { useState } from "react";
-import { GFGCard, LeetCodeCard } from "../CardCollection/allCard";
+import { GFGCard,  LeetCodeCards } from "../CardCollection/allCard";
 
 
 export const Content = () => {
@@ -75,7 +75,10 @@ const renderCard = () => {
       ); // Added closing parenthesis here
      case 'leetcode':
       return (
-        <LeetCodeCard />
+        <LeetCodeCards
+          rank={result.rank}
+          username={result.username}
+          iconGif={result.iconGif} name={""} iconGifBackground={""}        />
       );
     default:
       return null;

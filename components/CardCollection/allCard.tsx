@@ -1,6 +1,8 @@
 'use client'
-import { ScrapedData } from "@/types"
-import { Card } from "../card"
+import { ScrapedData, ScrapedLeetCodeData } from "@/types";
+
+import { Card }  from '../gfgCardcom';
+import { LeetCodeCard } from "../leetcodeCard"
 
 export const GFGCard = (
     {gotRank ,
@@ -25,11 +27,20 @@ export const GFGCard = (
 
 }
 
-export const LeetCodeCard = () => {
+export const LeetCodeCards = (
+    {
+      rank,
+      username,
+      iconGif
+    } : ScrapedLeetCodeData
+) => {
      
     return (
         <div>
-            <h1>Leetcode</h1>
+           <LeetCodeCard
+                rank={rank}
+                username={username}
+                iconGif={iconGif} name={""} iconGifBackground={""}           />
         </div>
     )
 }
