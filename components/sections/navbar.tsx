@@ -15,7 +15,7 @@ export const Navbar = () => {
               </div>
               
               </div>
-              <div className="flex justify-center p-2">
+              <div className="flex justify-center p-2 font-bold text-lg">
                  CodLio
               </div>
               <div >

@@ -17,7 +17,7 @@ export const SideBar = () => {
           </div>
           <div
             className="flex justify-center text-lg py-2 cursor-pointer"
-            onClick={() => router.push('/onecard')} // Navigate to One Card page
+            onClick={() => router.push('/')} // Navigate to One Card page
           >
             One Card
           </div>

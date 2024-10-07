@@ -1,9 +1,9 @@
 'use client';
 
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-import { SideBar } from '@/components/sections/sidebar';
 import { useState, useRef, useEffect } from 'react';
-
+import MenuIcon from '@mui/icons-material/Menu';
+import CancelIcon from '@mui/icons-material/Cancel';
+import { SideBar } from './sidebar';
 export const SidebarOpening = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null); // Specify the type of the ref
@@ -33,13 +33,13 @@ export const SidebarOpening = () => {
       {/* Toggle Button for Mobile View */}
       <button
         onClick={toggleSidebar}
-        className="block md:hidden border border-gray-400/20 rounded text-white bg-gray-800 z-50 py-3"
+        className="block w-fit md:hidden border border-gray-400/20 rounded text-white bg-gray-800 z-50 p-2 pt-3"
       >
         {/* Change button text or icon based on the sidebar state */}
-        {sidebarOpen ? 'Close' : <KeyboardDoubleArrowRightIcon />}
+        {sidebarOpen ? 'Close' : <MenuIcon />}
       </button>
 
-      <div className="flex pt-2">
+      <div className="flex pt-3">
         {/* Sidebar */}
         <div
           ref={sidebarRef} // Attach ref to the sidebar
@@ -51,12 +51,12 @@ export const SidebarOpening = () => {
             className="block md:hidden text-right text-white mb-4"
             onClick={toggleSidebar} // Close the sidebar on button click
           >
-            &times; {/* Cross icon to close the sidebar */}
+            <CancelIcon fontSize='large' />
           </button>
           
           {/* Sidebar Content */}
           <div className="w-32">
-            <SideBar /> {/* Sidebar Component (Links, Navigation, etc.) */}
+            <SideBar /> 
           </div>
         </div>
       </div>

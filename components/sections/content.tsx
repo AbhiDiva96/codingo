@@ -90,7 +90,7 @@ const renderCard = () => {
     <div>
       <div className="flex justify-center">
         <div className="p-4 w-full border bg-gray-800 text-white border-gray-800/20 rounded">
-          <div className="pb-8">
+          <div className="flex justify-center pb-8">
           <div className="py-4  flex justify-center">
             <DropdownMenu>
               <DropdownMenuTrigger className="border rounded border-gray-200/20 p-2">Choose Platform</DropdownMenuTrigger>
@@ -106,13 +106,13 @@ const renderCard = () => {
             </DropdownMenu>
 
           </div>
-          <div className="flex justify-center ">
-            {platform && <p className="mt-1">Selected Platform: {platform}</p>}
+          <div className="flex justify-center pl-8">
+            {platform && <p className="flex justify-center items-center mt-1">Selected Platform: {platform}</p>}
           </div>
        </div>
         
 
-          <div className="">
+          <div className="flex justify-center">
             <form onSubmit={getCard}>
               <div className="flex justify-center">
                 <input
@@ -124,6 +124,7 @@ const renderCard = () => {
                   className="w-64 px-2 py-2 text-gray-800 dark:text-white border rounded"
                 />
               </div>
+         
               <div className="pt-8 flex justify-center">
                 <button
                   type="submit"
