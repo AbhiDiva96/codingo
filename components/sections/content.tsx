@@ -65,7 +65,7 @@ const renderCard = () => {
       return (
         <GFGCard
           gotRank={result.gotRank}
-          username={result.username}
+          gfgusername={result.gfgusername}
           currentStreak={result.currentStreak}
           totalStreak={result.totalStreak}
           codingScore={result.codingScore}
@@ -77,8 +77,8 @@ const renderCard = () => {
       return (
         <LeetCodeCards
           rank={result.rank}
-          username={result.username}
-          iconGif={result.iconGif} name={""} iconGifBackground={""}        />
+          leetusername={result.leetusername}
+          iconGif={result.iconGif} name={""} iconGifBackground={""}   />
       );
     default:
       return null;
@@ -88,43 +88,49 @@ const renderCard = () => {
 
   return (
     <div>
-      <div className="flex justify-center pt-24">
-        <div className="p-4">
-          <div className="">
+      <div className="flex justify-center">
+        <div className="p-4 w-full border bg-gray-800 text-white border-gray-800/20 rounded">
+          <div className="pb-8">
+          <div className="py-4  flex justify-center">
             <DropdownMenu>
-              <DropdownMenuTrigger>Open</DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-transparent">
-                <DropdownMenuLabel>Select Platform</DropdownMenuLabel>
+              <DropdownMenuTrigger className="border rounded border-gray-200/20 p-2">Choose Platform</DropdownMenuTrigger>
+              <DropdownMenuContent className="bg-gray-800 text-white">
+                <DropdownMenuLabel className="border-b-2">Select Platform</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => setPlatform('gfg')}>GFG</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setPlatform('leetcode')}>LeetCode</DropdownMenuItem>
+                <DropdownMenuItem className="text-green-400" onClick={() => setPlatform('gfg')}>GFG</DropdownMenuItem>
+                <DropdownMenuItem className="text-yellow-400" onClick={() => setPlatform('leetcode')}>LeetCode</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setPlatform('codechef')}>CodeChef</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setPlatform('codeforce')}>CodeForce</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setPlatform('ninja')}>Ninja</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {platform && <p className="mt-2">Selected Platform: {platform}</p>}
           </div>
+          <div className="flex justify-center ">
+            {platform && <p className="mt-1">Selected Platform: {platform}</p>}
+          </div>
+       </div>
+        
 
-          <div>
+          <div className="">
             <form onSubmit={getCard}>
-              <div>
+              <div className="flex justify-center">
                 <input
                   type="text"
                   placeholder="Username"
                   value={username}
                   onChange={(e) => setUserName(e.target.value)}
-                  className="w-full px-4 py-2 border rounded"
+                  required
+                  className="w-64 px-2 py-2 text-gray-800 dark:text-white border rounded"
                 />
               </div>
-              <div>
+              <div className="pt-8 flex justify-center">
                 <button
                   type="submit"
-                  className="border px-2 text-white rounded"
+                  className="border px-2 py-1 text-white rounded"
                   disabled={loading}
                 >
-                  {loading ? "Loading..." : "Get Card"}
+                  {loading ? "Generating..." : "Generate"}
                 </button>
               </div>
             </form>
@@ -132,7 +138,7 @@ const renderCard = () => {
         </div>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-6 flex justify-center">
         {error && <p className="text-red-500">{error}</p>}
         {result && (
           <div className="p-4 rounded shadow">
@@ -140,6 +146,10 @@ const renderCard = () => {
           </div>
         )}
       </div>
+    
+
+
+
     </div>
   );
 };

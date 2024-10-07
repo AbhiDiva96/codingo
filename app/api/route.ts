@@ -35,6 +35,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error scraping data:');
-    return NextResponse.json({ error: `Failed to scrape data:` }, { status: 500 });
+    return NextResponse.json({ error: `Check your username or platform` }, { status: 500 });
   }
 }

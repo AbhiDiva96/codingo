@@ -7,7 +7,7 @@ import { useState } from "react"
  
  export const LeetCodeCard = (
      {rank,
-     username,
+     leetusername,
     //  level,
      iconGif,
     //  iconGifBackground,
@@ -42,7 +42,7 @@ import { useState } from "react"
                         </div>
                     </div>
                     <div>
-                        {username}
+                        {leetusername}
                     </div>
                     <div>
                         <Image 

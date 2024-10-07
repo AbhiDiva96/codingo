@@ -13,7 +13,7 @@ export async function scrapeGFG(username: string): Promise<ScrapedData> {
     const $ = cheerio.load(response.data);
 
     const scrapedData: ScrapedData = {
-      username: username,
+      gfgusername: username,
       gotRank: 0,
       currentStreak: 0,
       totalStreak: 0,
@@ -48,22 +48,7 @@ const extractScore = (labelText: string): number => {
             }
             return 0; // Default value if the score is not found
         }
-// Extract coding score, problem solved, and contest rating
 
-  // const extractNumber = (element: cheerio.Cheerio): number => {
-  //     const text = element.text().trim();
-  //     const number = parseInt(text.replace(/\D/g, ''), 10);
-  //     return isNaN(number) ? 0 : number;
-  //   };
-
-  //   // Updated level extraction
-  //   const levelElement = $('span.contestDetailsCard_head_detail__8P4Vo')
-  //     .filter((_, el) => $(el).text().includes('Level'))
-  //     .find('span.contestDetailsCard_head_detail--text__NG_ae');
-    
-  //   if (levelElement.length > 0) {
-  //     scrapedData.level = extractNumber(levelElement);
-  //   }
 
     
   

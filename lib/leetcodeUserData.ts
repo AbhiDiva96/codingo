@@ -17,7 +17,7 @@ export async function scrapeLeetCode(username: string ) {
    // Implement LeetCode scraping logic here
 
    const scrapeLeetcodeData : ScrapedLeetCodeData = {
-        username: username,
+        leetusername: username,
         name : "",
         totalMedal: 0,
         rank: 0,

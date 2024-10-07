@@ -6,7 +6,7 @@ import { LeetCodeCard } from "../leetcodeCard"
 
 export const GFGCard = (
     {gotRank ,
-     username, 
+     gfgusername, 
      currentStreak,
      totalStreak,
      codingScore,
@@ -16,7 +16,7 @@ export const GFGCard = (
         return <div>
             <Card 
                 gotRank={gotRank}
-                username={username}
+                gfgusername={gfgusername}
                 currentStreak={currentStreak}
                 totalStreak={totalStreak}
                 codingScore= {codingScore}
@@ -30,7 +30,7 @@ export const GFGCard = (
 export const LeetCodeCards = (
     {
       rank,
-      username,
+      leetusername,
       iconGif
     } : ScrapedLeetCodeData
 ) => {
@@ -39,7 +39,7 @@ export const LeetCodeCards = (
         <div>
            <LeetCodeCard
                 rank={rank}
-                username={username}
+                leetusername={leetusername}
                 iconGif={iconGif} name={""} iconGifBackground={""}           />
         </div>
     )

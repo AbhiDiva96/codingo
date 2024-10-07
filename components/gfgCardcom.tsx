@@ -5,7 +5,7 @@ import { ScrapedData } from "@/types"
  
  export const Card = (
     {gotRank ,
-     username, 
+    gfgusername, 
      currentStreak,
      totalStreak,
      codingScore,
@@ -24,7 +24,7 @@ import { ScrapedData } from "@/types"
                             {gotRank}
                            </div>
                            <div>
-                            {username}
+                            {gfgusername}
                            </div>
                            <div>
                             <div className="flex justify-center inline-block border-b-2 border-white w-10 pb-1">

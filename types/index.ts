@@ -1,5 +1,5 @@
 export interface ScrapedData {
-  username: string;
+  gfgusername: string;
   codingScore?: number;
    problemSolved?: number;
     contestRating?: number;
@@ -16,7 +16,7 @@ export interface ScrapedData {
 
 
 export interface ScrapedLeetCodeData{
-  username: string;
+  leetusername: string;
   name : string;
   totalMedal?: number;
   rank?: number;
