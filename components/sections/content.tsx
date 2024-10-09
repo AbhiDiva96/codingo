@@ -9,8 +9,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import React, { useState } from "react";
-import { GFGCard,  LeetCodeCards } from "../CardCollection/allCard";
-
+import { GFGCard, LeetCodeCards } from "../CardCollection/allCard";
+import { Modal } from "../modal"; 
 
 export const Content = () => {
 
@@ -19,6 +19,7 @@ export const Content = () => {
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
 
   const getCard = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,6 +47,7 @@ export const Content = () => {
         setError(data.error || "Something went wrong.");
       } else {
         setResult(data);
+        setIsModalOpen(true); // Open modal on successful fetch
       }
 
     } catch (err) {
@@ -55,63 +57,70 @@ export const Content = () => {
     }
   };
 
-const renderCard = () => {
-  if (!result) {
-    return null;
-  }
-
-  switch (platform) {
-    case 'gfg':
-      return (
-        <GFGCard
-          gotRank={result.gotRank}
-          gfgusername={result.gfgusername}
-          currentStreak={result.currentStreak}
-          totalStreak={result.totalStreak}
-          codingScore={result.codingScore}
-          problemSolved={result.problemSolved}
-          contestRating={result.contestRating}
-        />
-      ); // Added closing parenthesis here
-     case 'leetcode':
-      return (
-        <LeetCodeCards
-          rank={result.rank}
-          leetusername={result.leetusername}
-          iconGif={result.iconGif} name={""} iconGifBackground={""}   />
-      );
-    default:
+  const renderCard = () => {
+    if (!result) {
       return null;
-  }
-};
+    }
 
+    switch (platform) {
+      case 'gfg':
+        return (
+          <GFGCard
+            gotRank={result.gotRank}
+            gfgusername={result.gfgusername}
+            currentStreak={result.currentStreak}
+            totalStreak={result.totalStreak}
+            codingScore={result.codingScore}
+            problemSolved={result.problemSolved}
+            contestRating={result.contestRating}
+          />
+        );
+      case 'leetcode':
+        return (
+          <LeetCodeCards
+            rank={result.rank}
+            leetusername={result.leetusername}
+            iconGif={result.iconGif} 
+            name={""} 
+            iconGifBackground={""}
+            activeYears={result.activeYears}
+            streak={result.streak}
+            totalActiveDays={result.totalActiveDays}
+            solved={result.solved}
+            Rating={result.Rating}
+            level={result.level}
+            GlobalRanking={result.GlobalRanking}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <div>
       <div className="flex justify-center">
         <div className="p-4 w-full border bg-gray-800 text-white border-gray-800/20 rounded">
-          <div className="flex justify-center pb-8">
-          <div className="py-4  flex justify-center">
-            <DropdownMenu>
-              <DropdownMenuTrigger className="border rounded border-gray-200/20 p-2">Choose Platform</DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-gray-800 text-white">
-                <DropdownMenuLabel className="border-b-2">Select Platform</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="text-green-400" onClick={() => setPlatform('gfg')}>GFG</DropdownMenuItem>
-                <DropdownMenuItem className="text-yellow-400" onClick={() => setPlatform('leetcode')}>LeetCode</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setPlatform('codechef')}>CodeChef</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setPlatform('codeforce')}>CodeForce</DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setPlatform('ninja')}>Ninja</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
+          <div className="flex justify-center pb-2">
+            <div className="py-4 flex justify-center">
+              <DropdownMenu>
+                <DropdownMenuTrigger className="border rounded border-gray-200/20 p-2">Choose Platform</DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-gray-800 text-white">
+                  <DropdownMenuLabel className="border-b-2">Select Platform</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem className="text-green-400" onClick={() => setPlatform('gfg')}>GFG</DropdownMenuItem>
+                  <DropdownMenuItem className="text-yellow-400" onClick={() => setPlatform('leetcode')}>LeetCode</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setPlatform('codechef')}>CodeChef</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setPlatform('codeforce')}>CodeForce</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setPlatform('ninja')}>Ninja</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+            <div className="flex justify-center pl-8">
+              {platform && <p className="flex justify-center items-center mt-1">Selected Platform: {platform}</p>}
+            </div>
           </div>
-          <div className="flex justify-center pl-8">
-            {platform && <p className="flex justify-center items-center mt-1">Selected Platform: {platform}</p>}
-          </div>
-       </div>
-        
-
+          
           <div className="flex justify-center">
             <form onSubmit={getCard}>
               <div className="flex justify-center">
@@ -141,16 +150,12 @@ const renderCard = () => {
 
       <div className="mt-6 flex justify-center">
         {error && <p className="text-red-500">{error}</p>}
-        {result && (
-          <div className="p-4 rounded shadow">
-            {renderCard()}
-          </div>
-        )}
       </div>
-    
 
-
-
+      {/* Modal for displaying the result */}
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        {renderCard()}
+      </Modal>
     </div>
   );
 };

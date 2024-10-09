@@ -4,6 +4,7 @@ import { TypedDocumentNode, gql } from "@apollo/client";
 export const GET_USER_DATA: TypedDocumentNode = gql`
   query userBadges($username: String!) {
     matchedUser(username: $username) {
+      id  
       profile {
         realName
         ranking
@@ -11,11 +12,11 @@ export const GET_USER_DATA: TypedDocumentNode = gql`
       badges {
         name
         medal {
-            slug
-            config {
+          slug
+          config {
             iconGif
             iconGifBackground
-            }
+          }
         }
       }
       userCalendar {
@@ -43,17 +44,16 @@ export const GET_USER_CONTEST: TypedDocumentNode = gql`
   }
 `;
 
-export const GET_USER_SOLVED: TypedDocumentNode = gql
-`
-query userProblemsSolved($username: String!) {
-  matchedUser(username: $username) {
-    submitStatsGlobal {
-      acSubmissionNum {
-        difficulty
-        count
+export const GET_USER_SOLVED: TypedDocumentNode = gql`
+  query userProblemsSolved($username: String!) {
+    matchedUser(username: $username) {
+      id  
+      submitStatsGlobal {
+        acSubmissionNum {
+          difficulty
+          count
+        }
       }
     }
   }
-}
-
 `;

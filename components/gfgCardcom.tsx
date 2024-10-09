@@ -17,7 +17,7 @@ import { ScrapedData } from "@/types"
 
           <div className="flex justify-center ">
                <div >
-            <div className="relative z-10 isolate aspect-video w-96 rounded-xl bg-green-400 dark:bg-green-600/30 shadow-lg backdrop-blur-md border border-green-300/20 dark:border-green-500/30 ring-1 ring-green-500/20 dark:ring-green-700/30">
+            <div className="relative z-10 isolate aspect-video w-96 md:w-[80vh] rounded-xl bg-green-400 dark:bg-green-600/30 shadow-lg backdrop-blur-md border border-green-300/20 dark:border-green-500/30 ring-1 ring-green-500/20 dark:ring-green-700/30">
                        <div className="flex justify-between px-4 pt-2">
                            <div>
                             Rank: 

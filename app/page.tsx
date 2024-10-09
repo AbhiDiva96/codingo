@@ -15,7 +15,7 @@ export default function Home() {
     <div>
 
     
-          <div className="flex-1 pt-12 md:pl-[16rem]">
+        <div className="flex-1 pt-12 md:pl-[16rem]">
             <Content/>
         </div>
        

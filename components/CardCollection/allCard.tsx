@@ -31,7 +31,14 @@ export const LeetCodeCards = (
     {
       rank,
       leetusername,
-      iconGif
+      iconGif,
+      activeYears,
+      streak,
+      totalActiveDays,
+      solved,
+      level,
+      Rating,
+      GlobalRanking
     } : ScrapedLeetCodeData
 ) => {
      
@@ -40,7 +47,17 @@ export const LeetCodeCards = (
            <LeetCodeCard
                 rank={rank}
                 leetusername={leetusername}
-                iconGif={iconGif} name={""} iconGifBackground={""}           />
+                iconGif={iconGif}
+                 name={""}
+                  iconGifBackground={""}
+                  activeYears={activeYears}
+                  streak={streak}
+                  totalActiveDays={totalActiveDays}
+                  solved={solved}
+                  level={level}
+                  Rating={Rating}
+                  GlobalRanking={GlobalRanking}
+                  />
         </div>
     )
 }

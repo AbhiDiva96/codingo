@@ -92,6 +92,13 @@ if (solvedData && solvedData.matchedUser) {
     scrapeLeetcodeData.iconGif = getFirstIconGif;
     scrapeLeetcodeData.iconGifBackground = getFirstGifbackground;
   
+    const slugname = getFirstElement.medal;
+
+    if(slugname.slug === 'guardian'){
+        scrapeLeetcodeData.level = slugname.config.iconGif;
+    }else if(slugname.slug === 'knight'){
+        scrapeLeetcodeData.level = slugname.config.iconGif;
+    }
           
     
     
@@ -119,11 +126,11 @@ if (solvedData && solvedData.matchedUser) {
       scrapeLeetcodeData.Rating = contests.rating;
       scrapeLeetcodeData.GlobalRanking = contests.globalRanking;
   
-       if( !contests.badge || !contests.badge.name ){
-        scrapeLeetcodeData.level = 'No Level Yet';
-       }else{
-         scrapeLeetcodeData.level = (contests.badge.name === 'Guardian') ? 'Guardian' : 'Knight';
-       }
+      //  if( !contests.badge || !contests.badge.name ){
+      //   scrapeLeetcodeData.level = 'No level';
+      //  }else{
+      //    scrapeLeetcodeData.level = (contests.badge.name === 'Guardian') ? 'Guardian' : 'Knight';
+      //  }
     }
 
 
