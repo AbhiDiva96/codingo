@@ -1,9 +1,14 @@
-import axios from 'axios';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
 
+
+type SubmissionStat = {
+  difficulty: string;
+  count: number;
+};
+
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ScrapedLeetCodeData } from '@/types';
 import { GET_USER_CONTEST, GET_USER_DATA, GET_USER_SOLVED } from './graphql/leetcodegraphQl';
-import { Badge } from 'lucide-react';
+
 
 const client = new ApolloClient({
     uri: 'https://leetcode.com/graphql',
@@ -56,7 +61,7 @@ if (solvedData && solvedData.matchedUser) {
   const totalSolved = solvedData.matchedUser.submitStatsGlobal;
   const submissionStats = totalSolved.acSubmissionNum || [];
 
-  const difficultyCounts = submissionStats.reduce((acc:any, item : any) => {
+  const difficultyCounts = submissionStats.reduce((acc: Record<string, number> , item : SubmissionStat) => {
     acc[item.difficulty] = item.count;
     return acc;
   }, {});

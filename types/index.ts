@@ -1,6 +1,6 @@
 export interface ScrapedData {
   gfgusername: string;
-  codingScore?: number;
+  codingScore?: number | null;
    problemSolved?: number;
     contestRating?: number;
   solvedQuestions?: number;

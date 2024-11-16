@@ -1,4 +1,4 @@
 
-export async function scrapeNinaj(username : string){
+// export async function scrapeNinaj(username : string){
     
-}
+// }

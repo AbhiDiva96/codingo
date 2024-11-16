@@ -5,7 +5,8 @@ import { Card }  from '../gfgCardcom';
 import { LeetCodeCard } from "../leetcodeCard"
 
 export const GFGCard = (
-    {gotRank ,
+    {
+        gotRank ,
      gfgusername, 
      currentStreak,
      totalStreak,
@@ -19,10 +20,10 @@ export const GFGCard = (
                 gfgusername={gfgusername}
                 currentStreak={currentStreak}
                 totalStreak={totalStreak}
-                codingScore= {codingScore}
+                codingScore={codingScore}
                 problemSolved={problemSolved}
-                contestRating={contestRating}
-                /> 
+                contestRating={contestRating} 
+                   /> 
          </div>
 
 }

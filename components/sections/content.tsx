@@ -11,12 +11,13 @@ import {
 import React, { useState } from "react";
 import { GFGCard, LeetCodeCards } from "../CardCollection/allCard";
 import { Modal } from "../modal"; 
+import { ScrapedData, ScrapedLeetCodeData } from "@/types";
 
 export const Content = () => {
 
   const [platform, setPlatform] = useState<string | null>(null);
   const [username, setUserName] = useState("");
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<ScrapedData & ScrapedLeetCodeData | null >(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
@@ -50,7 +51,8 @@ export const Content = () => {
         setIsModalOpen(true); // Open modal on successful fetch
       }
 
-    } catch (err) {
+    } catch (error) {
+      console.error('Error fetching data:', error);
       setError('Failed to fetch data.');
     } finally {
       setLoading(false);
@@ -72,8 +74,8 @@ export const Content = () => {
             totalStreak={result.totalStreak}
             codingScore={result.codingScore}
             problemSolved={result.problemSolved}
-            contestRating={result.contestRating}
-          />
+            contestRating={result.contestRating} 
+                        />
         );
       case 'leetcode':
         return (

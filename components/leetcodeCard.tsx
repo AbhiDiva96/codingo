@@ -1,6 +1,6 @@
 'use client'
 
-import { ScrapedData, ScrapedLeetCodeData } from "@/types"
+import { ScrapedLeetCodeData } from "@/types"
 import Image from "next/image"
 import { useEffect, useState } from "react"
  
@@ -26,6 +26,7 @@ import { useEffect, useState } from "react"
     const [isImage, setIsImage] = useState(false);
 
   // Function to check if the level is "No level" and set the state
+  useEffect(() => {
   const getImage = () => {
     if (level === 'No level' || !level) {
       setIsImage(false);
@@ -33,10 +34,10 @@ import { useEffect, useState } from "react"
       setIsImage(true);
     }
   };
+  getImage();
+}, [level]);
 
-    useEffect(() => {
-    getImage();
-  }, [level]);
+   
 
     return <div> 
 

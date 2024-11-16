@@ -1,12 +1,7 @@
 'use client'
 
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 
 import { Content } from "@/components/sections/content";
-import { SideBar } from "@/components/sections/sidebar";
-
-import { useState } from "react";
-import AllPage from './allpage/page';
 
 export default function Home() {
 

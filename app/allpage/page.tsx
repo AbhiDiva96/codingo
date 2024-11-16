@@ -1,5 +1,7 @@
 'use client';
 
+import { ScrapedData, ScrapedLeetCodeData } from "@/types";
+
 import { GFGCard, LeetCodeCards } from "@/components/CardCollection/allCard";
 import React, { useState } from "react";
 
@@ -7,7 +9,7 @@ export default function AllPage() {
   const [gfgusername, setgfgusername] = useState("");
   const [leetusername, setleetusername] = useState("");
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<ScrapedData & ScrapedLeetCodeData | null>(null);
   const [loading, setLoading] = useState(false);
 
   const getAllCard = async (e: React.FormEvent) => {
@@ -37,7 +39,8 @@ export default function AllPage() {
       } else {
         setResult(data);
       }
-    } catch (err) {
+    } catch (error) {
+      console.error("Error fetching data:", error);
       setError("Failed to fetch data. Please try again later.");
     } finally {
       setLoading(false);
@@ -61,8 +64,7 @@ export default function AllPage() {
           totalStreak={result.totalStreak}
           codingScore={result.codingScore}
           problemSolved={result.problemSolved}
-          contestRating={result.contestRating}
-        />
+          contestRating={result.contestRating}         />
       );
     }
 
