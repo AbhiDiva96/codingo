@@ -112,9 +112,9 @@ export const Content = () => {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem className="text-green-400" onClick={() => setPlatform('gfg')}>GFG</DropdownMenuItem>
                   <DropdownMenuItem className="text-yellow-400" onClick={() => setPlatform('leetcode')}>LeetCode</DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setPlatform('codechef')}>CodeChef</DropdownMenuItem>
+                  {/* <DropdownMenuItem onClick={() => setPlatform('codechef')}>CodeChef</DropdownMenuItem>
                   <DropdownMenuItem onClick={() => setPlatform('codeforce')}>CodeForce</DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setPlatform('ninja')}>Ninja</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setPlatform('ninja')}>Ninja</DropdownMenuItem> */}
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
